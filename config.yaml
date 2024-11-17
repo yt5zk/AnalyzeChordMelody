@@ -1,0 +1,37 @@
+# config.yaml
+
+sample_rate: 44100
+normalize: true
+hop_size: 512
+min_frequency: 50
+max_frequency: 5000
+simultaneous_pitch_threshold: 2
+silence_threshold: 0.01
+
+# より厳格な和音判定のための設定
+
+# 和音判定の閾値を上げる（0.3→0.5）
+# フレームの半分以上が明確な和音の場合のみCHORDと判定
+chord_ratio_threshold: 0.2
+
+logging_level: INFO
+
+# 新しいパラメータ
+min_volume_threshold_db: -24  # この値未満は分析対象外
+max_volume_threshold_db: -12  # この値より大きいフレームは分析対象外
+
+# 音階重み付けの設定
+pitch_weight:
+  base_note: 60          # 基準となる音階（C4 = 60）
+  high_weight: 1.0       # 高音域の重み（1.0より小さいと重みを減らす）
+  low_weight: 1.5        # 低音域の重み（1.0より大きいと重みを増やす）
+  low_rate: 0.02        # 低音域の重み増加率（1音階あたり）
+  high_rate: 0.02       # 高音域の重み減少率（1音階あたり）
+
+# 判定方法の設定
+judgment_method: 'two_stage'  # 判定方法の選択
+
+# 二段階判定のパラメータ
+low_note_threshold: 48        # C3以下を低音とみなす
+low_chord_ratio_threshold: 0.1  # 低音和音の判定閾値
+chord_ratio_threshold: 0.2      # 通常の和音判定閾値

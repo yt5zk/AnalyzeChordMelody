@@ -1,0 +1,12 @@
+# docker-compose.yml
+
+services:
+  audio_analysis:
+    build: .
+    platform: linux/amd64  # プラットフォームを指定
+    volumes:
+      - .:/app
+      - ./data:/data
+    command: python3 main.py /data
+    environment:
+      - PYTHONUNBUFFERED=1

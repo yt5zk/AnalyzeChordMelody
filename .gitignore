@@ -1,0 +1,21 @@
+# Python cache and virtual environment
+__pycache__/
+*.py[cod]
+venv/
+env/
+.venv/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.wav
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Docker-related files
+.docker/
+*.pid
+docker-compose.override.yml
