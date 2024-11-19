@@ -28,10 +28,20 @@ pitch_weight:
   low_rate: 0.02        # 低音域の重み増加率（1音階あたり）
   high_rate: 0.02       # 高音域の重み減少率（1音階あたり）
 
-# 判定方法の設定
-judgment_method: 'two_stage'  # 判定方法の選択
+# 判定方式の設定
+judgment_method: 'two_stage'  # 'two_stage' または 'pitch_distribution'
+# judgment_method: 'pitch_distribution'
 
 # 二段階判定のパラメータ
-low_note_threshold: 48        # C3以下を低音とみなす
-low_chord_ratio_threshold: 0.1  # 低音和音の判定閾値
-chord_ratio_threshold: 0.2      # 通常の和音判定閾値
+two_stage:
+  simultaneous_pitch_threshold: 2    # 同時発音数の閾値
+  low_note_threshold: 48            # C3以下を低音とみなす
+  low_chord_ratio_threshold: 0.1    # 低音和音の判定閾値
+  chord_ratio_threshold: 0.2        # 通常の和音判定閾値
+
+# 音域分布判定のパラメータ
+pitch_distribution:
+  low_pitch_threshold: 48    # C3
+  high_pitch_threshold: 72   # C5
+  wide_range_threshold: 0.15 # 広い音域使用の判定閾値
+  low_range_threshold: 0.1   # 低音域使用の判定閾値

@@ -4,7 +4,6 @@ import sys
 import os
 from modules.config_loader import load_config
 from modules.logger import init_logger
-from modules.file_finder import find_wav_files
 from modules.audio_processor import load_and_preprocess_audio
 from modules.feature_extractor import extract_features
 from modules.judge import judge_chord_or_melody
@@ -46,7 +45,6 @@ def sort_files_by_hierarchy(files):
     """
     ファイルパスを階層ごとに昇順でソート
     """
-    # ファイルパスを階層とファイル名に分けてソート
     return sorted(files, key=lambda x: (os.path.dirname(x), os.path.basename(x)))
 
 def find_wav_files(directory):
@@ -59,7 +57,6 @@ def find_wav_files(directory):
     for root, _, files in os.walk(directory):
         for file in files:
             if file.lower().endswith('.wav'):
-                # 拡張子を除いたファイル名で"_MLD"の存在確認
                 name_without_ext = os.path.splitext(file)[0]
                 if "_MLD" in name_without_ext:
                     wav_files.append(os.path.join(root, file))
